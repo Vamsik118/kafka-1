@@ -1,0 +1,18 @@
+version: '2'
+services:
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:4.0.0
+    container_name: zookeeper-1
+    extra_hosts:
+      - "zookeeper_1:192.168.16.10"
+      - "zookeeper_2:192.168.16.20"
+      - "zookeeper_3:192.168.16.30"
+    env_file:
+      - ./zookeeper-1.env
+    ports:
+      - 22181:22181
+      - 22888:22888
+      - 23888:23888
+    volumes:
+      - /home/ubuntu/zookeeper_1/data:/var/lib/zookeeper/data
+      - /home/ubuntu/zookeeper_1/logs:/var/lib/zookeeper/log
